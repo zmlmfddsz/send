@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="initialize.css"/>
+    <script src="jquery.1.7.2.js"></script>
+    <style>
+        .div1{
+            width: 600px;
+            border:2px dashed purple;
+            margin:50px auto;
+            padding:10px;
+        }
+        .shuru0{
+            height: 100px;
+            display: block;
+            width: 560px;
+            border:2px dashed peru;
+            margin:20px auto;
+            color:#e8a610;
+            font-size:20px;
+            font-family:'萝莉体';
+        }
+        .shuru{
+            width: 560px;
+            border:2px dashed peru;
+            margin:10px auto;
+            display: none;
+        }
+        button{
+            outline:none;
+        }
+        .btn{
+            width: 69px;
+            padding: 5px 10px;
+            background: cornflowerblue;
+            border-radius: 25px;
+            position: relative;
+            color: white;
+            left: 515px;
+        }
+        .btn1{
+            width: 50px;
+            float: right;
+            background: #f3f59e;
+            border-radius: 9px;
+            padding: 0 5px;
+            color: #e8a610;
+
+        }
+        .div2{
+            padding: 3px 10px;
+            box-sizing: border-box;
+            border-bottom: 2px dashed #ceb352;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">
+    <textarea class="shuru0">顶顶顶</textarea>
+    <button class="btn">发表</button>
+    <div class="shuru"></div>
+</div>
+<script>
+    $(function(){
+        $('.btn').click(function () {
+            if($('.shuru0').val()){
+                $('.shuru').css('display','block').prepend($("<div></div>").addClass('clearFix div2').html($('.shuru0').val()).append('<button class="btn1">删除</button>'));
+                $('.div2').slideDown(500).css({
+                    'color':'#e8a610',
+                    'font-family':'萝莉体'
+                });
+                $('.shuru0').val("");
+            }else{
+                alert('请输入内容');
+            }
+        });
+        $('.shuru').click(function (e) {
+            var len=$(e.target).parent().siblings().length;
+            $(e.target).parent().slideUp(500, function () {
+                $(this).remove();
+            });
+
+            if(len==0){
+                $(this).css('display','none');
+            }
+
+        })
+
+    })
+</script>
+</body>
+</html>
